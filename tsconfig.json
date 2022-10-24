@@ -1,0 +1,11 @@
+// prettier-ignore
+{
+	"extends": "@tsconfig/react-native/tsconfig.json", /* Recommended React Native TSConfig base */
+	"compilerOptions": {
+		"noUnusedParameters": false,
+		"noUnusedLocals": false,
+	},
+	"exclude": [
+		"webpack.config.js"
+	],
+}
