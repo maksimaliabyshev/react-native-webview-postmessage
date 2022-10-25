@@ -1,53 +1,38 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
  * Generated with the TypeScript template
  * https://github.com/react-native-community/react-native-template-typescript
  *
  * @format
  */
 
-import React, { type PropsWithChildren } from 'react';
+import React, { type PropsWithChildren, useCallback, useEffect, useState } from 'react';
 
-import {
-	Button,
-	SafeAreaView,
-	ScrollView,
-	StatusBar,
-	StyleSheet,
-	Text,
-	useColorScheme,
-	View,
-} from 'react-native';
-import {
-	Colors,
-	DebugInstructions,
-	Header,
-	LearnMoreLinks,
-	ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import { Navio } from 'rn-navio';
+// import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import HomeScreen from './src/screens/HomeScreen';
+import { AppRoot } from './src/screens';
 
-const navio = Navio.build({
-	screens: {
-		Home: () => (
-			<>
-				{/* <Text>Home</Text>
-        <Button title="Push" onPress={() => navio.push('Settings')} /> */}
-				<HomeScreen />
-			</>
-		),
-		Settings: () => (
-			<>
-				<Text>Settings</Text>
-				<Button title="Go back" onPress={() => navio.goBack()} />
-			</>
-		),
-	},
-});
+export default (): JSX.Element => {
+	// const [ready, setReady] = useState(false);
+	// const start = useCallback(async () => {
+	// 	await SplashScreen.preventAutoHideAsync();
 
-// Root component
-export default () => <navio.Root />;
+	// 	setReady(true);
+	// 	await SplashScreen.hideAsync();
+	// }, []);
+
+	// useEffect(() => {
+	// 	start();
+	// }, [start]);
+	// if (!ready) {
+	// 	return <></>;
+	// }
+
+	return (
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<StatusBar />
+			<AppRoot />
+		</GestureHandlerRootView>
+	);
+};

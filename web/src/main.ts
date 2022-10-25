@@ -1,14 +1,28 @@
 import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+declare global {
+	interface Window {
+		ReactNativeWebView?: any;
+	}
+}
 
-// setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+// const generateOnMessageFunction = (data: any) => {
+// 	window.dispatchEvent(new MessageEvent('message', { data: JSON.stringify(data) }));
+// };
+// generateOnMessageFunction({ text: 'window.dispatchEvent message' });
+
+window.addEventListener('DOMContentLoaded', function () {
+	window.postMessage('window.postMessage DOMContentLoaded', '*');
+});
+
+// window.addEventListener('message', function (event) {
+// 	alert('message received: ' + event.data);
+// });
+
+const button = document.querySelector<HTMLElement>('#button');
+button!.onclick = () => {
+	if (window.ReactNativeWebView) {
+		// @param only string
+		window.ReactNativeWebView.postMessage('window.ReactNativeWebView.postMessage');
+	}
+};
